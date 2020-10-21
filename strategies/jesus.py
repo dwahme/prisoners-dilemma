@@ -63,8 +63,8 @@ if __name__ == "__main__":
     
     else:
         # Parse the histories and make sure they're valid
-        me = parse_history(args.m)
-        opp = parse_history(args.o)
+        me = parse_history(args.my_hist)
+        opp = parse_history(args.opp_hist)
         assert len(me) == len(opp)
 
         # Run the strategy
