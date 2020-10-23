@@ -1,4 +1,7 @@
 import argparse
+import glob
+import operator
+import os
 from subprocess import Popen, PIPE
 
 class Simulation:
@@ -39,6 +42,8 @@ class Simulation:
             self.hist_1 += res_1
             self.hist_2 += res_2
 
+        self.calc_time()
+
         return self.hist_1, self.hist_2
 
     def calc_time(self):
@@ -65,15 +70,48 @@ class Simulation:
         
         return self.time_1, self.time_2
 
+def run_all(folder, rounds):
+    os.chdir(folder)
+    files = [f for f in glob.glob("*.py")]
+    sims = []
+
+    for i, f_1 in enumerate(files):
+        for f_2 in files[i:]:
+            sim = Simulation(f_1, f_2, rounds)
+            sim.duel()
+
+            sims.append(sim)
+
+    return sims
+
+def dump_results(sims):
+    res = {}
+
+    print("Individual Results\n---------------")
+
+    for s in sims:
+        s_1 = s.strategy_1.split(".")[0]
+        s_2 = s.strategy_2.split(".")[0]
+
+        print(f"{s_1} vs {s_2}: {s.time_1}-{s.time_2}")
+        res[s_1] = s.time_1 + res.get(s_1, 0)
+        res[s_2] = s.time_1 + res.get(s_2, 0)
+
+    print("\nOverall Scores\n----------------")
+
+    for k, v in sorted(res.items(), key=operator.itemgetter(1)):
+        print(f"{k}: {v}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Runs the prisoner\'s dilemma contest')
     parser.add_argument('iterations', metavar='n', type=int,
                         help='How many times to run each simulation')
-    parser.add_argument('-a', type=str, dest="strat_1",
+    parser.add_argument('-a', type=str, dest="strat_1", default="",
                         help='The first strategy')
-    parser.add_argument('-b', type=str, dest="strat_2",
+    parser.add_argument('-b', type=str, dest="strat_2", default="",
                         help='The second strategy')
-    parser.add_argument('-f', type=str, dest="folder",
+    parser.add_argument('-f', type=str, dest="folder", default="",
                         help='The fodler containing all strategies to test')
     args = parser.parse_args()
 
@@ -83,4 +121,5 @@ if __name__ == "__main__":
         print(sim.duel(), sim.calc_time())
 
     elif args.folder != "":
-        pass
+        sims = run_all(args.folder, args.iterations)
+        dump_results(sims)
