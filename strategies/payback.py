@@ -21,7 +21,7 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "jesus"
+STRATEGY_NAME = "Payback"
 AUTHOR = "Dawson"
 
 def strategy(my_hist, opp_hist, round):
@@ -35,7 +35,12 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    # Always trusts
+    if round >= 3:
+        if (opp_hist[-1] == Choice.BETRAY and
+                opp_hist[-2] == Choice.BETRAY and
+                opp_hist[-3] == Choice.BETRAY):
+            return Choice.BETRAY
+
     return Choice.TRUST
 
 ###############################
