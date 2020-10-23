@@ -3,7 +3,7 @@ from enum import Enum
 
 class Choice(Enum):
     """Provides the two options for the prisoner's dilemma"""
-    TRUST = "T"
+    SILENT = "S"
     BETRAY = "B"
 
     def __repr__(self):
@@ -35,13 +35,14 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
+    # Only retaliates if the opponent betrayed the last 3 times in a row
     if round >= 3:
         if (opp_hist[-1] == Choice.BETRAY and
                 opp_hist[-2] == Choice.BETRAY and
                 opp_hist[-3] == Choice.BETRAY):
             return Choice.BETRAY
 
-    return Choice.TRUST
+    return Choice.SILENT
 
 ###############################
 # END YOUR STRATEGY

@@ -3,7 +3,7 @@ from enum import Enum
 
 class Choice(Enum):
     """Provides the two options for the prisoner's dilemma"""
-    TRUST = "T"
+    SILENT = "S"
     BETRAY = "B"
 
     def __repr__(self):
@@ -35,8 +35,8 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    # Always trusts
-    return Choice.TRUST
+    # Always stays silent
+    return Choice.SILENT
 
 ###############################
 # END YOUR STRATEGY

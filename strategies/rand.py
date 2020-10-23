@@ -4,7 +4,7 @@ import random
 
 class Choice(Enum):
     """Provides the two options for the prisoner's dilemma"""
-    TRUST = "T"
+    SILENT = "S"
     BETRAY = "B"
 
     def __repr__(self):
@@ -40,7 +40,7 @@ def strategy(my_hist, opp_hist, round):
     r = random.randint(0, 1)
 
     if r == 0:
-        return Choice.TRUST
+        return Choice.SILENT
     else:
         return Choice.BETRAY
 
