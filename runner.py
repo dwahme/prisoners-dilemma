@@ -19,6 +19,10 @@ class Simulation:
         self.time_2 = 0
 
     def __run(self):
+        """
+        Runs a single round of a duel between two strategies
+        """
+
         strat_1_args = ["python3", self.strategy_1, 
                         "-m", self.hist_1, "-o", self.hist_2]
         strat_2_args = ["python3", self.strategy_2, 
@@ -37,6 +41,10 @@ class Simulation:
         return out_1, out_2
 
     def duel(self):
+        """
+        Runs a full duel between two strategies
+        """
+
         for i in range(self.rounds):
             res_1, res_2 = self.__run()
             self.hist_1 += res_1
@@ -47,7 +55,11 @@ class Simulation:
         return self.hist_1, self.hist_2
 
     def calc_time(self):
-        # Calculates total time spent in jail
+        """
+        Calculates total time spent in jail for both strategies
+        Make sure to call duel() first
+        """
+
         for i in range(self.rounds):
             if self.hist_1[i] == "S" and self.hist_2[i] == "S":
                 self.time_1 += 1
@@ -71,6 +83,10 @@ class Simulation:
         return self.time_1, self.time_2
 
 def run_all(folder, rounds):
+    """
+    Runs a full contest between all strategies in <folder> for <rounds>
+    """
+
     os.chdir(folder)
     files = [f for f in glob.glob("*.py")]
     sims = []
@@ -85,6 +101,11 @@ def run_all(folder, rounds):
     return sims
 
 def dump_results(sims):
+    """"
+    Finds the winner for the contest
+    Prints out the results
+    """
+
     res = {}
 
     print("Individual Results\n---------------")
