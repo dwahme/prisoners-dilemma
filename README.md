@@ -39,9 +39,11 @@ The total time for each duel will then be accumulated for each strategy, and the
 
 ## Creating a Strategy
 
+The strategy design part is more important, and is intended for both programmers and non-programmers to be able to do.
+
 ### Strategy Design
 
-First, please take a moment to write a few sentences about what you think the best strategy would look like. For the sake of this experiment, please do not look up on the internet what the best strategy is. You could describe the actual steps to implement the strategy ("betrays if all 3 of the previous opponent's choices were to stay silent"), or more general characteristics of the strategy ("tends to betray more often", "switches choices a lot", etc). Any description is fine; they do not have to conform to some standard.
+First, please take a moment to write a few sentences about what you think the best strategy would look like. For the sake of this experiment, please do not look up on the internet what the best strategy is. You could describe the actual steps to implement the strategy ("betrays if all 3 of the previous opponent's choices were to stay silent", "betrays with a 30% chance", etc), or more general characteristics of the strategy ("tends to betray more often", "switches choices a lot", etc). Any description is fine; they do not have to conform to some standard.
 
 The important part of this step is to determine what people think are characteristics of an optimal strategy, not to determine the actual optimal strategy. This is more important than finding an actual winner.
 
@@ -66,7 +68,7 @@ Each strategy will be written as a program. Specifically, in `./template.py`, al
 
 To run the Satan strategy (`./strategies/satan.py`) against the Jesus strategy (`./strategies/jesus.py`) for 10 rounds
 ```
-python3 runner.py -a strategies/satan.py -b strategies/jesus.py 10
+python3 runner.py -a ./strategies/satan.py -b ./strategies/jesus.py 10
 ```
 
 To run a contest between all strategies in the `./strategies` folder for 200 rounds each
