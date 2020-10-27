@@ -8,7 +8,7 @@ This runs a contest for the iterated prisoner's dilemma, an upgraded version of 
 
 The rules for the basic prisoner's dilemma is as follows:
 1. Two strategies are given a choice- whether to stay silent, or betray the other strategy
-2. Depending on both of their choices, the strategy are assigned "prison time"
+2. Depending on both of their choices, each strategy is assigned "prison time"
 3. The goal is to come out with the minimum amount of prison time
 
 Prison time is assigned as follows:
