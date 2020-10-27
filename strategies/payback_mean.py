@@ -21,7 +21,7 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "Payback"
+STRATEGY_NAME = "Payback Mean"
 AUTHOR = "Dawson"
 
 def strategy(my_hist, opp_hist, round):
@@ -37,8 +37,8 @@ def strategy(my_hist, opp_hist, round):
     """
     # Only retaliates if the opponent betrayed the last 3 times in a row
     if round >= 3:
-        if (opp_hist[-1] == Choice.BETRAY and
-                opp_hist[-2] == Choice.BETRAY and
+        if (opp_hist[-1] == Choice.BETRAY or
+                opp_hist[-2] == Choice.BETRAY or
                 opp_hist[-3] == Choice.BETRAY):
             return Choice.BETRAY
 
