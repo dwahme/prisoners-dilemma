@@ -18,7 +18,7 @@ Prison time is assigned as follows:
 
 ### The Iterated Prisoner's Dilemma
 
-This is the same as the prisoner's dilemma, except it is run a large number of times between the two strategies (on the order or 200 or so times). Each strategy can see all the choices both strategies made before the current round, and can use that information to make their next decision.
+This is the same as the prisoner's dilemma, except it is run a large number of times between the two strategies (think about 200 or so times). Each strategy can see all the choices both strategies made before the current round, and can use that information to make their next decision.
 
 For example, if Strategy A and Strategy B were preparing to make their decision for round 4, Strategy A would receive the following information:
 - Strategy A's history: Silent, Silent, Betray
