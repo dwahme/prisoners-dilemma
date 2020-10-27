@@ -36,6 +36,8 @@ Given a number of strategies, the contest will run each strategy against every o
 
 The total time for each duel will then be accumulated for each strategy, and the strategies will be ranked based upon total prison time acquired. The best strategy will be the one with the lowest total prison time, and the worst strategy will be the one with the most total prison time.
 
+Note- for this contest, an undisclosed number between 200 and 1000 will be chosen as the number of rounds.
+
 ## Creating a Strategy
 
 The strategy design part is more important, and is intended for both programmers and non-programmers to be able to do.
