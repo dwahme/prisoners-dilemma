@@ -8,7 +8,7 @@ This runs a contest for the iterated prisoner's dilemma, an upgraded version of 
 
 The rules for the basic prisoner's dilemma is as follows:
 1. Two strategies are given a choice- whether to stay silent, or betray the other strategy
-2. Depending on both of their choices, the strategy are assigned "prison time"
+2. Depending on both of their choices, each strategy is assigned "prison time"
 3. The goal is to come out with the minimum amount of prison time
 
 Prison time is assigned as follows:
@@ -18,7 +18,7 @@ Prison time is assigned as follows:
 
 ### The Iterated Prisoner's Dilemma
 
-This is the same as the prisoner's dilemma, except it is run a large number of times between the two strategies (on the order or 200 or so times). Each strategy can see all the choices both strategies made before the current round, and can use that information to make their next decision.
+This is the same as the prisoner's dilemma, except it is run a large number of times between the two strategies (think about 200 or so times). Each strategy can see all the choices both strategies made before the current round, and can use that information to make their next decision.
 
 For example, if Strategy A and Strategy B were preparing to make their decision for round 4, Strategy A would receive the following information:
 - Strategy A's history: Silent, Silent, Betray
@@ -35,6 +35,8 @@ So, using the choices above, the time accumulated after round 3 for each strateg
 Given a number of strategies, the contest will run each strategy against every other strategy, including itself.
 
 The total time for each duel will then be accumulated for each strategy, and the strategies will be ranked based upon total prison time acquired. The best strategy will be the one with the lowest total prison time, and the worst strategy will be the one with the most total prison time.
+
+Note- for this contest, an undisclosed number between 200 and 1000 will be chosen as the number of rounds.
 
 ## Creating a Strategy
 
