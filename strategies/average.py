@@ -21,8 +21,8 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "Satan"
-AUTHOR = "Dummy"
+STRATEGY_NAME = "Average"
+AUTHOR = "<redacted>"
 
 def strategy(my_hist, opp_hist, round):
     """The logic of the strategy
@@ -35,8 +35,15 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    # Always betrays
-    return Choice.BETRAY
+    betrays = len([x for x in opp_hist if x == Choice.BETRAY])
+    silent = round - betrays
+
+    if betrays > silent:
+        return Choice.BETRAY
+    elif silent > betrays:
+        return Choice.SILENT
+
+    return Choice.SILENT
 
 ###############################
 # END YOUR STRATEGY

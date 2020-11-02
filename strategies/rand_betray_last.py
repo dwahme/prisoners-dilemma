@@ -1,5 +1,6 @@
 import argparse
 from enum import Enum
+import random
 
 class Choice(Enum):
     """Provides the two options for the prisoner's dilemma"""
@@ -21,8 +22,8 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "Satan"
-AUTHOR = "Dummy"
+STRATEGY_NAME = "Random Betray Last"
+AUTHOR = "<redacted>"
 
 def strategy(my_hist, opp_hist, round):
     """The logic of the strategy
@@ -35,8 +36,16 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    # Always betrays
-    return Choice.BETRAY
+    # Chooses a Choice randomly
+    r = random.randint(0, 1)
+
+    if round == 999:
+        return Choice.BETRAY
+
+    if r == 0:
+        return Choice.SILENT
+    else:
+        return Choice.BETRAY
 
 ###############################
 # END YOUR STRATEGY

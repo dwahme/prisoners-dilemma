@@ -21,7 +21,7 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "Satan"
+STRATEGY_NAME = "Giant Nuke"
 AUTHOR = "Dummy"
 
 def strategy(my_hist, opp_hist, round):
@@ -35,8 +35,9 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    # Always betrays
-    return Choice.BETRAY
+    if Choice.BETRAY in opp_hist:
+        return Choice.BETRAY
+    return Choice.SILENT
 
 ###############################
 # END YOUR STRATEGY

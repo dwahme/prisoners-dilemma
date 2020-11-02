@@ -1,5 +1,6 @@
 import argparse
 from enum import Enum
+import random
 
 class Choice(Enum):
     """Provides the two options for the prisoner's dilemma"""
@@ -21,8 +22,40 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "Satan"
-AUTHOR = "Dummy"
+STRATEGY_NAME = "Candy Swiper"
+AUTHOR = "<redacted>"
+
+def usually_betray(opp_hist, round):
+    num_betray = len([x for x in opp_hist if x == Choice.BETRAY])
+    num_silent = round - num_betray
+
+    return num_betray / round > .75
+
+def usually_silent(opp_hist, round):
+    num_betray = len([x for x in opp_hist if x == Choice.BETRAY])
+    num_silent = round - num_betray
+
+    return num_silent / round > .75
+
+def go_silent_early(round):
+    x = random.randint(0, 200)
+    return x > round
+
+def does_retaliate(my_hist, opp_hist, round):
+    resp_bs = 0
+    resp_b = 0
+
+    for i in range(round):
+        if my_hist[i - 1] == Choice.BETRAY:
+            resp_b += 1
+            if opp_hist[i] == Choice.SILENT:
+                resp_bs += 1
+    
+    if resp_b == 0 or resp_bs / resp_b > .66:
+        return False
+
+    return True
+
 
 def strategy(my_hist, opp_hist, round):
     """The logic of the strategy
@@ -35,8 +68,20 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    # Always betrays
-    return Choice.BETRAY
+
+    if round < 2:
+        return Choice.SILENT
+
+    if usually_betray(opp_hist, round):
+        return Choice.BETRAY
+    elif go_silent_early(round):
+        return Choice.SILENT
+    elif not does_retaliate(my_hist, opp_hist, round):
+        return Choice.BETRAY
+    elif usually_silent(opp_hist, round):
+        return Choice.BETRAY
+
+    return Choice.SILENT
 
 ###############################
 # END YOUR STRATEGY

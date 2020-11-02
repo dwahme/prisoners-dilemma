@@ -21,7 +21,7 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "Satan"
+STRATEGY_NAME = "Every 4"
 AUTHOR = "Dummy"
 
 def strategy(my_hist, opp_hist, round):
@@ -35,8 +35,9 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    # Always betrays
-    return Choice.BETRAY
+    if round % 4 == 3:
+        return Choice.BETRAY
+    return Choice.SILENT
 
 ###############################
 # END YOUR STRATEGY

@@ -21,8 +21,8 @@ def parse_history(hist):
 # YOUR STRATEGY HERE
 ###############################
 
-STRATEGY_NAME = "jesus"
-AUTHOR = "Dawson"
+STRATEGY_NAME = "Jesus"
+AUTHOR = "Dummy"
 
 def strategy(my_hist, opp_hist, round):
     """The logic of the strategy

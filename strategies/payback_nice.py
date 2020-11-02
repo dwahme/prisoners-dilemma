@@ -22,7 +22,7 @@ def parse_history(hist):
 ###############################
 
 STRATEGY_NAME = "Payback Nice"
-AUTHOR = "Dawson"
+AUTHOR = "Dummy"
 
 def strategy(my_hist, opp_hist, round):
     """The logic of the strategy

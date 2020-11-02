@@ -93,6 +93,7 @@ def run_all(folder, rounds):
 
     for i, f_1 in enumerate(files):
         for f_2 in files[i:]:
+            print(i, f_1, f_2)
             sim = Simulation(f_1, f_2, rounds)
             sim.duel()
 
