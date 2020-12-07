@@ -107,7 +107,7 @@ def run_all(strats, rounds):
     sims = []
 
     for i, f_1 in enumerate(strats):
-        for f_2 in strats[i:]:
+        for f_2 in strats[i + 1:]:
             # print(i, f_1, f_2)
             sim = Simulation(f_1, f_2, rounds)
             sim.duel()
