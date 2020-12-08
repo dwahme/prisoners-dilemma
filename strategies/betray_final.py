@@ -35,7 +35,7 @@ def strategy(my_hist, opp_hist, round):
     Returns:
         A Choice for this round
     """
-    if round == 200: # upper bound
+    if round == 999: # upper bound
         return Choice.BETRAY
     elif round == 0: # first round
         return Choice.SILENT
