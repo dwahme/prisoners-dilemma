@@ -38,6 +38,12 @@ The total time for each duel will then be accumulated for each strategy, and the
 
 Note- for this contest, an undisclosed number between 200 and 1000 will be chosen as the number of rounds.
 
+### The Evolutionary Prisoner's Dilemma
+
+Given a number of strategies, this will run a prisoner's dilemma contest for a number of generations.
+
+For each new generation, the bottom third scoring strategies will be removed, and they will be replaced with the top third scoring strategies (this doubles the top third scoring strategies). Then the next generation will be run.
+
 ## Creating a Strategy
 
 The strategy design part is more important, and is intended for both programmers and non-programmers to be able to do.
@@ -64,6 +70,7 @@ Each strategy will be written as a program. Specifically, in `./template.py`, al
 - `python3 runner.py -h`: information on how to run the program
 - `python3 runner.py -a .<strategy_a> -b <strategy_b> <num_rounds>`: Runs Strategy A vs Strategy B in a duel for `<num_rounds>` rounds
 - `python3 runner.py -f <folder> <num_rounds>`: Runs a full prisoner's dilemma contest for all strategies in folder `<folder>` for `<num_rounds>` rounds
+- `python3 runner.py -f <folder> -g <generations> <num_rounds>`: Runs a full evolutionary prisoner's dilemma for all strategies in folder `<folder>` for `<num_rounds>` rounds over `<generations>` generations
 
 ### Example Usage
 
@@ -75,4 +82,9 @@ python3 runner.py -a ./strategies/satan.py -b ./strategies/jesus.py 10
 To run a contest between all strategies in the `./strategies` folder for 200 rounds each
 ```
 python3 runner.py -f ./strategies/ 200
+```
+
+To run an evolutionary contest between all strategies in the `./strategies` folder for 200 rounds each over 6 generations
+```
+python3 runner.py -f ./strategies/ -g 6 200
 ```
